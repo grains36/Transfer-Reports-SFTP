@@ -1,0 +1,153 @@
+{
+  "name": "Transfer Reports SFTP",
+  "namespace": "TransferReports\\TransferReportsModule",
+  "authors": [
+    {
+      "name": "Gary Rains",
+      "email": "gary.rains@duke.edu",
+      "institution": "Duke University School of Medicine"
+    }
+  ],
+  "description": "Module that allows for automatically sending a report via SFTP with a cron",
+  "crons": [
+    {
+      "cron_name": "report_sftp_cron",
+      "cron_description": "Cron that runs every hour to send reports",
+      "method": "sftpmethod",
+      "cron_frequency": "3600",
+      "cron_max_run_time": "500"
+    }
+  ],
+  "no-auth-pages": [
+    "reportftp_now"
+  ],
+  "no-csrf-pages": [
+    "reportftp_now"
+  ],
+  "links": {
+    "control-center": [],
+    "project": [
+      {
+        "name": "TransferReportsSFTP",
+        "icon": "report",
+        "url": "reportftp_now.php?NOAUTH"
+      }
+    ]
+  },
+  "framework-version": 13,
+  "project-settings": [
+    {
+      "key": "cron_disable",
+      "name": "Disable Hourly Cron for this project",
+      "type": "checkbox"
+    },
+    {
+      "key": "time_of_day",
+      "name": "Time of Day to Run Cron in 24-hour format, e.g., 14 for 2 PM",
+      "type": "text",
+      "required": true
+    },
+    {
+	      "key": "time_of_day2",
+	      "name": "Second Time of Day to Run Cron in 24-hour format, e.g., 18 for 6 PM",
+	      "type": "text",
+	      "required": false
+    },
+    {
+      "key": "run_on_monday",
+      "name": "Run on Monday",
+      "type": "checkbox"
+    },
+    {
+      "key": "run_on_tuesday",
+      "name": "Run on Tuesday",
+      "type": "checkbox"
+    },
+    {
+      "key": "run_on_wednesday",
+      "name": "Run on Wednesday",
+      "type": "checkbox"
+    },
+    {
+      "key": "run_on_thursday",
+      "name": "Run on Thursday",
+      "type": "checkbox"
+    },
+    {
+      "key": "run_on_friday",
+      "name": "Run on Friday",
+      "type": "checkbox"
+    },
+    {
+      "key": "run_on_saturday",
+      "name": "Run on Saturday",
+      "type": "checkbox"
+    },
+    {
+      "key": "run_on_sunday",
+      "name": "Run on Sunday",
+      "type": "checkbox"
+    },
+    {
+      "key": "token1",
+      "name": "Token for current project",
+      "type": "password",
+      "required": true
+    },
+    {
+      "key": "report_settings",
+      "name": "Report Settings",
+      "type": "sub_settings",
+      "repeatable": true,
+      "required": true,
+      "sub_settings": [
+        {
+          "key": "report_id",
+          "name": "Report ID",
+          "type": "text",
+          "required": true
+        }
+      ]
+    },
+    {
+      "key": "site",
+      "name": "Site",
+      "type": "text",
+      "required": true
+    },
+    {
+      "key": "port",
+      "name": "Port",
+      "type": "text",
+      "required": true
+    },
+    {
+      "key": "username",
+      "name": "Username",
+      "type": "password",
+      "required": true
+    },
+    {
+      "key": "password",
+      "name": "Password",
+      "type": "password",
+      "required": true
+    },
+    {
+      "key": "csv_file_name",
+      "name": "CSV File Name",
+      "type": "text",
+      "required": true
+    },
+    {
+      "key": "filename_format",
+      "name": "Filename Format",
+      "type": "dropdown",
+      "choices": [
+        { "value": "0", "name": "filename_only" },
+        { "value": "1", "name": "filename_plus_date" },
+        { "value": "2", "name": "filename_plus_datetime" }
+      ]
+     }
+  ]
+}
